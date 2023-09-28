@@ -11,15 +11,15 @@ const allItems = [
 ]
 
 function App() {
-  const [items, setItems] = React.useState(allItems)
+  const [items, setItems] = React.useState(allItems);
 
   function addItem() {
-    const itemIds = items.map(i => i.id)
-    setItems([...items, allItems.find(i => !itemIds.includes(i.id))])
+    const itemIds = items.map(i => i.id);
+    setItems([...items, allItems.find(i => !itemIds.includes(i.id))]);
   }
 
   function removeItem(item) {
-    setItems(items.filter(i => i.id !== item.id))
+    setItems(items.filter(i => i.id !== item.id));
   }
 
   return (
@@ -28,17 +28,17 @@ function App() {
         add item
       </button>
       <ul>
-        {items.map(item => (
+        {items.map((item) => (
           // 🐨 add a key prop to the <li> below. Set it to item.id
-          <li>
+          <li key={`${item.id}`}>
             <button onClick={() => removeItem(item)}>remove</button>{' '}
-            <label htmlFor={`${item.id}-input`}>{item.value}</label>{' '}
-            <input id={`${item.id}-input`} defaultValue={item.value} />
+            <label htmlFor={`${item.id}-input-hr`}>{item.value}</label>{' '}
+            <input id={`${item.id}-input-hr`} defaultValue={item.value}/>
           </li>
         ))}
       </ul>
     </div>
-  )
+  );
 }
 
 export default App
